@@ -45,7 +45,9 @@ class PostRepository
 
     public function destroy($id)
     {
-        $this->post->findOrFail($id)->delete();
+        $post = $this->post->findOrFail($id);
+        $post->tags()->detach();
+        $post->delete();
     }
 
 

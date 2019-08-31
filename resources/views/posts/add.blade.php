@@ -15,6 +15,10 @@
 						{!! Form::textarea ('contenu', null, ['class' => 'form-control', 'placeholder' => 'Contenu']) !!}
 						{!! $errors->first('contenu', '<small class="help-block">:message</small>') !!}
 					</div>
+					<div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
+						{!! Form::text('tags', null, array('class' => 'form-control', 'placeholder' => 'Entrez les tags séparés par des virgules')) !!}
+						{!! $errors->first('tags', '<small class="help-block">:message</small>') !!}
+					</div>
 					{!! Form::submit('Envoyer !', ['class' => 'btn btn-info pull-right']) !!}
 				{!! Form::close() !!}
 			</div>
