@@ -4,7 +4,16 @@
     @if(Auth::check())
         <div class="btn-group pull-right">
 			{!! link_to_route('post.create', 'Créer un article', [], ['class' => 'btn btn-info']) !!}
-			{!! link_to('logout', 'Deconnexion', ['class' => 'btn btn-warning']) !!}
+			<!--  {!! link_to('logout', 'Deconnexion', ['class' => 'btn btn-warning']) !!} -->
+			<a class="btn btn-warning" href="{{ route('logout') }}"
+				onclick="event.preventDefault();
+								document.getElementById('logout-form').submit();">
+				{{ __('Logout') }}
+			</a>
+
+			<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+				@csrf
+			</form>
 		</div>
 	@else
 		{!! link_to('login', 'Se connecter', ['class' => 'btn btn-info pull-right']) !!}
